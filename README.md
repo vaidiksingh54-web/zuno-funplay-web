@@ -19,21 +19,49 @@
 * **Explore ZUNO Action Blocks**: Visual category shortcuts (*Action Games*, *Brain Games*, *Quiz Challenges*, *Creative Tools*, *Fun Activities*).
 * **Daily Quest Teaser**: Instant status of daily mission rewards and player leveling.
 
-### 2. 🕹️ Games Section
-* **Tic-Tac-Toe**:
-  * Classic 3x3 interactive duel designed with custom colorful rounded tiles.
-  * Supports **vs AI** mode and **2-Player** local mode.
-  * Tracks rounds, player wins, opponent wins, and congratulatory win confetti.
-* **Match Pairs Memory Card Game**:
-  * 4x4 card grid featuring 8 pairs of cute animal characters (Frog, Cat, Kangaroo, Bulldog, Fennec, Ostrich, Turtle, Bluebird).
-  * Smooth card flip animations, move counter, live timer, and victory scoring.
+### 2. 🕹️ Games Section (11 Playable Instant Games)
+
+ZUNO features a complete gaming arcade with both **Single-Player** and **2-Player / Friend Challenge** modes:
+
+* **Bubble Pop (Color Matching Puzzle)**:
+  * Aim and launch colored bubbles at the ceiling grid.
+  * Match 3 or more of the same color to pop and drop clusters.
+  * Solo and 2-Player duel modes with moves limits and combo bonuses.
+* **Dash Rush (3-Lane Endless Runner)**:
+  * Dodge wooden wagons, jump over log barriers, and slide under obstacles.
+  * Collect golden coins with increasing speed over time.
+  * On-screen mobile buttons + keyboard Arrow keys (Left/Right, Up to jump, Down to slide).
+* **Whack Attack (Reaction Game)**:
+  * Whack cute moles as they pop up randomly from 6 holes in an outdoor garden.
+  * Golden moles award +50 points; avoid penalty bombs!
+  * Combo streak multipliers and 30-second time trial challenge.
+* **Block Mania (Block Blast Puzzle)**:
+  * Place geometric shapes on an 8x8 wooden-style grid.
+  * Complete full horizontal rows or vertical columns to trigger line-clear sounds and score bursts.
+  * Turn-based pass-and-play duel mode to challenge a friend.
+* **Space Survivor (Sci-Fi Arcade Blaster)**:
+  * Pilot a neon interceptor through an asteroid belt.
+  * Fire lasers, collect multiplier boosts, and survive multiple shield waves.
+  * Solo high-score challenge and 2-player flight duels.
+* **Beat Master (4-Lane Rhythm Music Game)**:
+  * Hit notes as they cross the neon target line with keys `[D, F, J, K]` or mobile touch pads.
+  * Visual splashes for `PERFECT` and `GOOD` timing with dynamic combo counters.
+  * High-energy synthesized chiptune music tracks.
+* **Draw & Guess (Multiplayer Creative Party Game)**:
+  * Pass & play party game: one player receives a secret word and sketches on a digital canvas.
+  * Friends guess the word before the 45-second timer expires.
+  * Word dictionary, drawing color palette, brush/eraser, and guess validator.
+* **XO Arena (Tic-Tac-Toe)**:
+  * Classic 3x3 interactive duel with cute player avatars.
+  * Supports **vs AI** mode and **2-Player** local duel with round tracking.
+* **Memory Flip (Match Pairs)**:
+  * 4x4 card grid featuring 8 pairs of cute animal characters.
+  * Smooth card flip animations, move counter, and timer.
 * **Slither Snake Arena**:
-  * HTML5 Canvas real-time snake gameplay.
-  * Smooth steering following mouse position + click/space speed boost.
-  * Glowing food pellets, friendly ambient bot snakes, and live in-game leaderboard (*Pro Cobra*, *Pro Hunter*, *Venom*).
-* **Retro Arcade (Flappy Bird & Space Pong)**:
-  * *Flappy Flyer*: Gravity and jump physics, pipe obstacles, collision detection, and score tracking.
-  * *Space Pong*: Retro table tennis against an intelligent AI paddle with velocity increases on hit.
+  * Real-time canvas snake with mouse steering and click/space speed boost.
+  * Glowing food pellets, friendly bot snakes, and live in-game leaderboard.
+* **Classic Arcade (Flappy Flyer & Space Pong)**:
+  * Playable Flappy Bird flyer and Space Pong paddle tennis.
 
 ### 3. 🏆 Quiz World Section
 * **Daily Trivia Quiz**:
