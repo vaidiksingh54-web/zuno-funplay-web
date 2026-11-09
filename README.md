@@ -3,6 +3,9 @@
 > **"Turn Boring Time Into Fun Time"**  
 > Play games, take quizzes, explore AI tools, and unleash your creativity — all in one place!
 
+🌐 **Live Website**: [https://vaidiksingh54-web.github.io/zuno-funplay-web/](https://vaidiksingh54-web.github.io/zuno-funplay-web/)  
+📦 **Public Repository**: [https://github.com/vaidiksingh54-web/zuno-funplay-web](https://github.com/vaidiksingh54-web/zuno-funplay-web)
+
 ---
 
 ## 🌟 Overview
