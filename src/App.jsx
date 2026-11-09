@@ -12,6 +12,7 @@ import { soundManager } from './utils/soundEffects';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('home');
+  const [activeGame, setActiveGame] = useState('bubble');
   const [profile, setProfile] = useState(getProfile());
   const [isAuthOpen, setIsAuthOpen] = useState(false);
 
@@ -21,6 +22,13 @@ export default function App() {
       setProfile(updatedProfile);
       saveProfile(updatedProfile);
     }
+  };
+
+  // Direct game selector from Home or Navbar
+  const handleSelectGame = (gameId) => {
+    setActiveGame(gameId);
+    setActiveTab('games');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   // Scroll to top on tab change
@@ -35,6 +43,7 @@ export default function App() {
       <Navbar
         activeTab={activeTab}
         setActiveTab={setActiveTab}
+        onSelectGame={handleSelectGame}
         profile={profile}
         onOpenAuth={() => {
           soundManager.playPop();
@@ -49,6 +58,7 @@ export default function App() {
             setActiveTab={setActiveTab}
             profile={profile}
             onOpenAuth={() => setIsAuthOpen(true)}
+            onSelectGame={handleSelectGame}
           />
         )}
 
@@ -56,6 +66,8 @@ export default function App() {
           <GamesSection
             profile={profile}
             onProfileUpdate={handleProfileUpdate}
+            activeGame={activeGame}
+            setActiveGame={setActiveGame}
           />
         )}
 
@@ -98,30 +110,26 @@ export default function App() {
       />
 
       {/* Footer Styled with ZUNO Brand */}
-      <footer className="bg-white border-t border-amber-100 py-10 mt-auto">
+      <footer className="mt-16 bg-white border-t border-slate-200 py-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-amber-400 flex items-center justify-center text-lg font-bold shadow-xs">
-              🪐
-            </div>
-            <div>
-              <span className="font-extrabold text-slate-900 font-heading text-lg">
-                ZU<span className="text-amber-500">NO</span> FUNPLAY
-              </span>
-              <p className="text-[11px] text-slate-400">Your Universe of Fun • Games, Quizzes, AI & Creativity</p>
-            </div>
+          <div className="flex items-center gap-2">
+            <span className="text-xl">🪐</span>
+            <span className="font-extrabold text-slate-900 font-heading">ZUNO FunPlay</span>
+            <span className="text-xs text-slate-400 font-medium">© 2026 Turn Boring Time Into Fun Time</span>
           </div>
-
-          <div className="flex items-center gap-6 text-xs font-semibold text-slate-500">
-            <button onClick={() => setActiveTab('games')} className="hover:text-amber-600 transition-colors">Games</button>
-            <button onClick={() => setActiveTab('quiz')} className="hover:text-amber-600 transition-colors">Quiz World</button>
-            <button onClick={() => setActiveTab('ai')} className="hover:text-amber-600 transition-colors">AI Fun</button>
-            <button onClick={() => setActiveTab('creative')} className="hover:text-amber-600 transition-colors">Creative Studio</button>
-            <button onClick={() => setActiveTab('community')} className="hover:text-amber-600 transition-colors">Community</button>
-          </div>
-
-          <div className="text-[11px] text-slate-400 font-medium">
-            © {new Date().getFullYear()} ZUNO FunPlay. Ready for everyone.
+          <div className="flex items-center gap-6 text-xs text-slate-500 font-semibold">
+            <button onClick={() => setActiveTab('games')} className="hover:text-amber-600 transition-colors">
+              12 Instant Games
+            </button>
+            <button onClick={() => setActiveTab('quiz')} className="hover:text-amber-600 transition-colors">
+              Daily Quizzes
+            </button>
+            <button onClick={() => setActiveTab('ai')} className="hover:text-amber-600 transition-colors">
+              AI Tools
+            </button>
+            <button onClick={() => setActiveTab('creative')} className="hover:text-amber-600 transition-colors">
+              Creative Studio
+            </button>
           </div>
         </div>
       </footer>

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { 
   Gamepad2, Brain, Sparkles, Swords, Trophy, Flame, 
-  CircleDot, Footprints, Hammer, Grid3X3, Rocket, Music, Palette, Users
+  CircleDot, Footprints, Hammer, Grid3X3, Rocket, Music, Palette, Users,
+  Compass, Candy, Zap
 } from 'lucide-react';
 import TicTacToe from './games/TicTacToe';
 import MemoryGame from './games/MemoryGame';
@@ -14,11 +15,17 @@ import BlockMania from './games/BlockMania';
 import SpaceSurvivor from './games/SpaceSurvivor';
 import BeatMaster from './games/BeatMaster';
 import DrawAndGuess from './games/DrawAndGuess';
+import ColorCrush from './games/ColorCrush';
+import MazeEscape from './games/MazeEscape';
+import BrainBattle from './games/BrainBattle';
 import { soundManager } from '../utils/soundEffects';
 
-export default function GamesSection({ profile, onProfileUpdate }) {
-  const [activeGame, setActiveGame] = useState('bubble');
+export default function GamesSection({ profile, onProfileUpdate, activeGame: externalActiveGame, setActiveGame: externalSetActiveGame }) {
+  const [localActiveGame, setLocalActiveGame] = useState('bubble');
   const [activeCategory, setActiveCategory] = useState('all');
+
+  const activeGame = externalActiveGame || localActiveGame;
+  const setActiveGame = externalSetActiveGame || setLocalActiveGame;
 
   const allGames = [
     {
@@ -27,7 +34,7 @@ export default function GamesSection({ profile, onProfileUpdate }) {
       subtitle: 'Match-3 Bubble Shooter',
       category: 'puzzle',
       icon: CircleDot,
-      badge: 'New Hot',
+      badge: 'Hot',
       color: 'bg-rose-500 text-white',
       cardBg: 'hover:border-rose-300',
     },
@@ -62,6 +69,36 @@ export default function GamesSection({ profile, onProfileUpdate }) {
       cardBg: 'hover:border-indigo-300',
     },
     {
+      id: 'colorcrush',
+      title: 'Color Crush',
+      subtitle: 'Fruit Candy Cascade Saga',
+      category: 'puzzle',
+      icon: Sparkles,
+      badge: 'Match-3',
+      color: 'bg-pink-500 text-white',
+      cardBg: 'hover:border-pink-300',
+    },
+    {
+      id: 'maze',
+      title: 'Maze Escape',
+      subtitle: 'Dungeon Key & Trap Runner',
+      category: 'arcade',
+      icon: Compass,
+      badge: 'Adventure',
+      color: 'bg-emerald-600 text-white',
+      cardBg: 'hover:border-emerald-300',
+    },
+    {
+      id: 'brainbattle',
+      title: 'Brain Battle',
+      subtitle: '1v1 Rapid Trivia Duel',
+      category: 'multiplayer',
+      icon: Zap,
+      badge: '1v1 Duel',
+      color: 'bg-violet-600 text-white',
+      cardBg: 'hover:border-violet-300',
+    },
+    {
       id: 'space',
       title: 'Space Survivor',
       subtitle: 'Spaceship Asteroid Blaster',
@@ -78,8 +115,8 @@ export default function GamesSection({ profile, onProfileUpdate }) {
       category: 'reaction',
       icon: Music,
       badge: 'Rhythm',
-      color: 'bg-pink-500 text-white',
-      cardBg: 'hover:border-pink-300',
+      color: 'bg-fuchsia-500 text-white',
+      cardBg: 'hover:border-fuchsia-300',
     },
     {
       id: 'drawguess',
@@ -87,7 +124,7 @@ export default function GamesSection({ profile, onProfileUpdate }) {
       subtitle: 'Multiplayer Party Game',
       category: 'multiplayer',
       icon: Palette,
-      badge: 'Multiplayer',
+      badge: 'Party',
       color: 'bg-purple-500 text-white',
       cardBg: 'hover:border-purple-300',
     },
@@ -107,7 +144,7 @@ export default function GamesSection({ profile, onProfileUpdate }) {
       subtitle: 'Animal Card Matching',
       category: 'puzzle',
       icon: Brain,
-      badge: 'Brain Boost',
+      badge: 'Brain',
       color: 'bg-teal-500 text-white',
       cardBg: 'hover:border-teal-300',
     },
@@ -117,14 +154,14 @@ export default function GamesSection({ profile, onProfileUpdate }) {
       subtitle: 'Grow & Dodge Arena',
       category: 'arcade',
       icon: Flame,
-      badge: 'Leaderboard',
-      color: 'bg-emerald-600 text-white',
-      cardBg: 'hover:border-emerald-300',
+      badge: 'Classic',
+      color: 'bg-lime-600 text-white',
+      cardBg: 'hover:border-lime-300',
     },
     {
       id: 'arcade',
-      title: 'Classic Arcade',
-      subtitle: 'Flappy Flyer & Space Pong',
+      title: 'Retro Arcade',
+      subtitle: 'Flappy Flyer & Pong',
       category: 'arcade',
       icon: Gamepad2,
       badge: 'Retro',
@@ -134,11 +171,11 @@ export default function GamesSection({ profile, onProfileUpdate }) {
   ];
 
   const categories = [
-    { id: 'all', label: 'All Games (11)' },
+    { id: 'all', label: `All Games (${allGames.length})` },
     { id: 'arcade', label: 'Arcade & Action' },
     { id: 'puzzle', label: 'Puzzles & Brain' },
     { id: 'reaction', label: 'Reaction & Rhythm' },
-    { id: 'multiplayer', label: 'Multiplayer & Social' },
+    { id: 'multiplayer', label: 'Multiplayer & 2-Player' },
   ];
 
   const filteredGames = activeCategory === 'all'
@@ -153,13 +190,13 @@ export default function GamesSection({ profile, onProfileUpdate }) {
         <div>
           <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-bold mb-2">
             <Gamepad2 className="w-3.5 h-3.5" />
-            <span>ZUNO Gaming Universe</span>
+            <span>ZUNO Gaming Universe (12 Blueprint Games)</span>
           </div>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-heading">
             Instant Play Games & Challenges
           </h1>
           <p className="text-sm text-slate-500 font-medium">
-            Compete, challenge friends in 2-Player modes, and climb the daily leaderboard!
+            12 full games with Solo, AI, and 2-Player Friend challenges + Leaderboard rewards!
           </p>
         </div>
 
@@ -196,7 +233,7 @@ export default function GamesSection({ profile, onProfileUpdate }) {
       </div>
 
       {/* Game Selector Cards Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-3">
         {filteredGames.map((g) => {
           const Icon = g.icon;
           const isSelected = activeGame === g.id;
@@ -207,17 +244,17 @@ export default function GamesSection({ profile, onProfileUpdate }) {
                 soundManager.playPop();
                 setActiveGame(g.id);
               }}
-              className={`p-3.5 rounded-2xl border text-left transition-all duration-200 flex flex-col justify-between ${
+              className={`p-3 rounded-2xl border text-left transition-all duration-200 flex flex-col justify-between ${
                 isSelected
                   ? 'bg-white border-amber-400 shadow-md shadow-amber-100 -translate-y-1 ring-2 ring-amber-400/40'
                   : `bg-white/80 border-slate-200 hover:bg-white ${g.cardBg}`
               }`}
             >
-              <div className="flex items-center justify-between mb-3">
-                <div className={`w-9 h-9 rounded-xl flex items-center justify-center shadow-xs ${g.color}`}>
+              <div className="flex items-center justify-between mb-2">
+                <div className={`w-8 h-8 rounded-xl flex items-center justify-center shadow-xs ${g.color}`}>
                   <Icon className="w-4 h-4" />
                 </div>
-                <span className="text-[9px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">
+                <span className="text-[9px] font-black uppercase tracking-wider px-1.5 py-0.5 rounded-full bg-slate-100 text-slate-600">
                   {g.badge}
                 </span>
               </div>
@@ -236,6 +273,9 @@ export default function GamesSection({ profile, onProfileUpdate }) {
         {activeGame === 'dash' && <DashRush onProfileUpdate={onProfileUpdate} />}
         {activeGame === 'whack' && <WhackAttack onProfileUpdate={onProfileUpdate} />}
         {activeGame === 'block' && <BlockMania onProfileUpdate={onProfileUpdate} />}
+        {activeGame === 'colorcrush' && <ColorCrush onProfileUpdate={onProfileUpdate} />}
+        {activeGame === 'maze' && <MazeEscape onProfileUpdate={onProfileUpdate} />}
+        {activeGame === 'brainbattle' && <BrainBattle onProfileUpdate={onProfileUpdate} />}
         {activeGame === 'space' && <SpaceSurvivor onProfileUpdate={onProfileUpdate} />}
         {activeGame === 'beat' && <BeatMaster onProfileUpdate={onProfileUpdate} />}
         {activeGame === 'drawguess' && <DrawAndGuess onProfileUpdate={onProfileUpdate} />}

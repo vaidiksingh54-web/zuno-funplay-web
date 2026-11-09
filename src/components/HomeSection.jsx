@@ -1,16 +1,17 @@
 import React from 'react';
 import { 
   Gamepad2, Trophy, Sparkles, Palette, Users, ArrowRight, Brain, 
-  HelpCircle, Star, Flame, Award, ChevronRight, Play, CheckCircle2, Gift
+  HelpCircle, Star, Flame, Award, ChevronRight, Play, CheckCircle2, Gift,
+  CircleDot, Footprints, Hammer, Grid3X3, Rocket, Music, Swords, Compass, Zap
 } from 'lucide-react';
 import { soundManager } from '../utils/soundEffects';
 
-export default function HomeSection({ setActiveTab, profile, onOpenAuth }) {
+export default function HomeSection({ setActiveTab, profile, onOpenAuth, onSelectGame }) {
   const quickCategories = [
     {
       id: 'games',
       title: 'Games',
-      desc: 'Play exciting games',
+      desc: 'Play 12 exciting games',
       icon: Gamepad2,
       color: 'from-blue-500 to-indigo-600',
       bgColor: 'bg-blue-50 hover:bg-blue-100/80',
@@ -51,6 +52,117 @@ export default function HomeSection({ setActiveTab, profile, onOpenAuth }) {
       color: 'from-teal-400 to-cyan-600',
       bgColor: 'bg-teal-50 hover:bg-teal-100/80',
       badgeColor: 'bg-teal-600 text-white',
+    },
+  ];
+
+  const featuredGames = [
+    {
+      id: 'bubble',
+      title: 'Bubble Pop',
+      subtitle: 'Match-3 Shooter',
+      badge: 'Hot',
+      icon: CircleDot,
+      color: 'bg-rose-500 text-white',
+      cardBg: 'from-rose-50 to-orange-50/60 border-rose-200',
+    },
+    {
+      id: 'dash',
+      title: 'Dash Rush',
+      subtitle: '3-Lane Runner',
+      badge: 'Action',
+      icon: Footprints,
+      color: 'bg-amber-500 text-white',
+      cardBg: 'from-amber-50 to-yellow-50/60 border-amber-200',
+    },
+    {
+      id: 'whack',
+      title: 'Whack Attack',
+      subtitle: 'Reaction Speed',
+      badge: 'Reflex',
+      icon: Hammer,
+      color: 'bg-orange-500 text-white',
+      cardBg: 'from-orange-50 to-amber-50/60 border-orange-200',
+    },
+    {
+      id: 'colorcrush',
+      title: 'Color Crush',
+      subtitle: 'Candy Cascade Match-3',
+      badge: 'Match-3',
+      icon: Sparkles,
+      color: 'bg-pink-500 text-white',
+      cardBg: 'from-pink-50 to-rose-50/60 border-pink-200',
+    },
+    {
+      id: 'maze',
+      title: 'Maze Escape',
+      subtitle: 'Dungeon Key & Traps',
+      badge: 'Adventure',
+      icon: Compass,
+      color: 'bg-emerald-600 text-white',
+      cardBg: 'from-emerald-50 to-teal-50/60 border-emerald-200',
+    },
+    {
+      id: 'brainbattle',
+      title: 'Brain Battle',
+      subtitle: '1v1 Live Quiz Arena',
+      badge: '1v1 Duel',
+      icon: Zap,
+      color: 'bg-violet-600 text-white',
+      cardBg: 'from-violet-50 to-indigo-50/60 border-violet-200',
+    },
+    {
+      id: 'block',
+      title: 'Block Mania',
+      subtitle: 'Line Clear Blast',
+      badge: 'Puzzle',
+      icon: Grid3X3,
+      color: 'bg-indigo-500 text-white',
+      cardBg: 'from-indigo-50 to-blue-50/60 border-indigo-200',
+    },
+    {
+      id: 'space',
+      title: 'Space Survivor',
+      subtitle: 'Asteroid Dodging',
+      badge: 'Sci-Fi',
+      icon: Rocket,
+      color: 'bg-cyan-500 text-white',
+      cardBg: 'from-cyan-50 to-sky-50/60 border-cyan-200',
+    },
+    {
+      id: 'beat',
+      title: 'Beat Master',
+      subtitle: '4-Lane Rhythm Music',
+      badge: 'Rhythm',
+      icon: Music,
+      color: 'bg-fuchsia-500 text-white',
+      cardBg: 'from-fuchsia-50 to-pink-50/60 border-fuchsia-200',
+    },
+    {
+      id: 'drawguess',
+      title: 'Draw & Guess',
+      subtitle: 'Multiplayer Party',
+      badge: 'Party',
+      icon: Palette,
+      color: 'bg-purple-500 text-white',
+      cardBg: 'from-purple-50 to-indigo-50/60 border-purple-200',
+    },
+    {
+      id: 'tictactoe',
+      title: 'XO Arena',
+      subtitle: 'Classic Duels & AI',
+      badge: '2-Player',
+      icon: Swords,
+      color: 'bg-emerald-500 text-white',
+      cardBg: 'from-emerald-50 to-teal-50/60 border-emerald-200',
+    },
+    {
+      id: 'memory',
+      title: 'Memory Flip',
+      subtitle: 'Card Pair Match',
+      badge: 'Brain',
+      icon: Brain,
+      color: 'bg-teal-500 text-white',
+      cardBg: 'from-teal-50 to-cyan-50/60 border-teal-200',
     },
   ];
 
@@ -102,6 +214,15 @@ export default function HomeSection({ setActiveTab, profile, onOpenAuth }) {
     setActiveTab(tab);
   };
 
+  const handleGameLaunch = (gameId) => {
+    soundManager.playPop();
+    if (onSelectGame) {
+      onSelectGame(gameId);
+    } else {
+      setActiveTab('games');
+    }
+  };
+
   return (
     <div className="space-y-12 pb-16">
       
@@ -117,7 +238,7 @@ export default function HomeSection({ setActiveTab, profile, onOpenAuth }) {
           {/* Left Column: Heading & CTA */}
           <div className="lg:col-span-7 space-y-6">
             
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-100/80 border border-amber-200 text-amber-900 text-xs font-bold">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-100/80 border border-amber-200 text-amber-900 text-xs font-bold">
               <Flame className="w-4 h-4 text-amber-500 fill-amber-400" />
               <span>Welcome to ZUNO 1.0 — Your Fun Playground</span>
             </div>
@@ -128,7 +249,7 @@ export default function HomeSection({ setActiveTab, profile, onOpenAuth }) {
             </h1>
 
             <p className="text-lg text-slate-600 max-w-xl font-medium leading-relaxed">
-              Play games, take quizzes, explore AI tools, and unleash your creativity — all in one place!
+              Play 12 instant games, compete in 2-Player friend challenges, take daily quizzes, and unleash your creativity!
             </p>
 
             <div className="flex flex-wrap items-center gap-4 pt-2">
@@ -139,7 +260,7 @@ export default function HomeSection({ setActiveTab, profile, onOpenAuth }) {
                 }}
                 className="btn-fun inline-flex items-center gap-3 px-8 py-4 bg-amber-400 hover:bg-amber-300 text-slate-950 rounded-2xl font-black text-base transition-all shadow-md shadow-amber-200/80"
               >
-                <span>Start Exploring</span>
+                <span>Play Games (12)</span>
                 <ArrowRight className="w-5 h-5" />
               </button>
 
@@ -156,18 +277,18 @@ export default function HomeSection({ setActiveTab, profile, onOpenAuth }) {
             </div>
 
             {/* Quick stats ribbon */}
-            <div className="pt-4 flex items-center gap-6 text-xs text-slate-500 font-semibold border-t border-amber-200/60">
+            <div className="pt-4 flex flex-wrap items-center gap-6 text-xs text-slate-500 font-semibold border-t border-amber-200/60">
               <div className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-                <span>4+ Instant Games</span>
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span className="font-bold text-slate-800">12 Playable Instant Games</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-indigo-500"></span>
-                <span>Trivia & Dilemmas</span>
+                <span className="w-2.5 h-2.5 rounded-full bg-indigo-500"></span>
+                <span>2-Player Friend Duels</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-pink-500"></span>
-                <span>Creative Drawing Studio</span>
+                <span className="w-2.5 h-2.5 rounded-full bg-pink-500"></span>
+                <span>Daily Quests & Leaderboard</span>
               </div>
             </div>
 
@@ -235,6 +356,69 @@ export default function HomeSection({ setActiveTab, profile, onOpenAuth }) {
             </div>
           );
         })}
+      </section>
+
+      {/* 🎮 FEATURED INSTANT GAMES (12 Blueprint Games) SHOWCASED ON HOME */}
+      <section className="space-y-4">
+        <div className="flex items-center justify-between">
+          <div>
+            <div className="inline-flex items-center gap-1 text-xs font-extrabold text-amber-600 uppercase tracking-wider mb-1">
+              <Flame className="w-3.5 h-3.5" />
+              <span>Instant Play Arcade</span>
+            </div>
+            <h2 className="text-2xl font-extrabold text-slate-900 font-heading">
+              12 Games to Play Right Now
+            </h2>
+            <p className="text-sm text-slate-500 font-medium">
+              Click any game to launch and play immediately! Solo & 2-Player Duel modes.
+            </p>
+          </div>
+          <button
+            onClick={() => handleCardClick('games')}
+            className="flex items-center gap-1 text-xs font-bold text-amber-600 hover:text-amber-700 group bg-amber-50 px-3.5 py-1.5 rounded-full border border-amber-200"
+          >
+            <span>View Arcade Hub</span>
+            <ChevronRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+          </button>
+        </div>
+
+        {/* 12 Game Cards Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3.5">
+          {featuredGames.map((game) => {
+            const Icon = game.icon;
+            return (
+              <div
+                key={game.id}
+                onClick={() => handleGameLaunch(game.id)}
+                className={`group cursor-pointer rounded-2xl p-4 border bg-gradient-to-b ${game.cardBg} transition-all duration-200 hover:-translate-y-1.5 hover:shadow-md flex flex-col justify-between`}
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <div className={`w-10 h-10 rounded-xl flex items-center justify-center shadow-xs ${game.color} group-hover:scale-110 transition-transform`}>
+                      <Icon className="w-5 h-5" />
+                    </div>
+                    <span className="text-[10px] font-black uppercase px-2 py-0.5 rounded-full bg-white/90 text-slate-700 shadow-2xs">
+                      {game.badge}
+                    </span>
+                  </div>
+                  <h3 className="font-extrabold text-slate-900 text-sm font-heading group-hover:text-amber-600 transition-colors truncate">
+                    {game.title}
+                  </h3>
+                  <p className="text-[11px] text-slate-500 font-medium truncate mt-0.5">
+                    {game.subtitle}
+                  </p>
+                </div>
+
+                <div className="mt-4 pt-2.5 border-t border-slate-200/50 flex items-center justify-between text-xs font-bold text-slate-700 group-hover:text-amber-600">
+                  <span className="text-[11px]">Play Now</span>
+                  <div className="w-6 h-6 rounded-full bg-white shadow-2xs flex items-center justify-center group-hover:bg-amber-400 group-hover:text-slate-950 transition-all">
+                    <Play className="w-3 h-3 fill-current ml-0.5" />
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </section>
 
       {/* Explore ZUNO Section — From Screenshot 134819.png */}

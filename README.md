@@ -18,11 +18,12 @@
 
 ### 1. 🏠 Home Section
 * **Hero Banner**: "Turn Boring Time Into Fun Time" with vibrant branding, interactive call-to-actions, and quick navigation.
+* **Instant Play Arcade**: Showcase of all 12 games directly on the homepage with direct "Play Now" launch cards.
 * **Quick Category Cards**: One-click access to the 5 core pillars: *Games*, *Quiz World*, *AI Fun*, *Creative Studio*, and *Community*.
 * **Explore ZUNO Action Blocks**: Visual category shortcuts (*Action Games*, *Brain Games*, *Quiz Challenges*, *Creative Tools*, *Fun Activities*).
 * **Daily Quest Teaser**: Instant status of daily mission rewards and player leveling.
 
-### 2. 🕹️ Games Section (11 Playable Instant Games)
+### 2. 🕹️ Games Section (All 12 Blueprint Games + Retro Classics)
 
 ZUNO features a complete gaming arcade with both **Single-Player** and **2-Player / Friend Challenge** modes:
 
@@ -34,6 +35,15 @@ ZUNO features a complete gaming arcade with both **Single-Player** and **2-Playe
   * Dodge wooden wagons, jump over log barriers, and slide under obstacles.
   * Collect golden coins with increasing speed over time.
   * On-screen mobile buttons + keyboard Arrow keys (Left/Right, Up to jump, Down to slide).
+* **Color Crush (Candy & Gem Match-3 Cascade Saga)**:
+  * Swap adjacent colorful fruits & gems (🍓, 🍋, 🍇, 💎, 🍊, 🍏) to create matches of 3 or more.
+  * Multi-cascade chains, combo multipliers, target score, and 2-Player turn duel mode.
+* **Maze Escape (Dungeon Key & Trap Adventure)**:
+  * Explore labyrinth corridors, find the Golden Key 🗝️, dodge deadly spikes ⚠️, and escape via the exit portal 🌀.
+  * Virtual mobile D-pad + keyboard controls with 2-Player Time Attack races.
+* **Brain Battle (1v1 Rapid Trivia Quiz Duel)**:
+  * Fast-paced 5-round battle vs Smart AI (ZunoBot) or 2-Player local friend pass & play.
+  * 10-second countdown with heartbeat sound, 💡 50:50 lifelines, and speed score bonuses.
 * **Whack Attack (Reaction Game)**:
   * Whack cute moles as they pop up randomly from 6 holes in an outdoor garden.
   * Golden moles award +50 points; avoid penalty bombs!
@@ -57,6 +67,13 @@ ZUNO features a complete gaming arcade with both **Single-Player** and **2-Playe
 * **XO Arena (Tic-Tac-Toe)**:
   * Classic 3x3 interactive duel with cute player avatars.
   * Supports **vs AI** mode and **2-Player** local duel with round tracking.
+* **Memory Flip (Animal Card Match)**:
+  * 4x4 card grid featuring 8 pairs of cute animal avatars.
+  * Flip cards, test memory, track moves and timer with celebration animations.
+* **Slither Snake (Arena Grow)**:
+  * Smooth steering canvas snake game with mouse or touch controls.
+* **Classic Arcade (Flappy Flyer & Space Pong)**:
+  * Retro physics-based arcade mini-games.
 * **Memory Flip (Match Pairs)**:
   * 4x4 card grid featuring 8 pairs of cute animal characters.
   * Smooth card flip animations, move counter, and timer.
